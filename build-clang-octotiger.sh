@@ -12,7 +12,7 @@ cd src
 if [ ! -d octotiger ] ; then
     git clone git@github.com:STEllAR-GROUP/octotiger.git
     cd octotiger
-    #git checkout cuda_conversion
+    git checkout clang_conversion
     cd ..
 fi
 cd octotiger
