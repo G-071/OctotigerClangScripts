@@ -1,5 +1,10 @@
 #!/bin/bash
-. ./source-me.sh
+set -e
+set -x
+if [ -z ${octotiger_source_me_sources} ] ; then
+    . source-me.sh
+fi
+
 cd $BUILD_ROOT
 if [ ! -f boost_$BOOST_SUFFIX.tar.gz ] ; then
     wget http://vorboss.dl.sourceforge.net/project/boost/boost/$BOOST_VER/boost_$BOOST_SUFFIX.tar.gz

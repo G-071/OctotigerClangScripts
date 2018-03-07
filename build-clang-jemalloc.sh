@@ -1,5 +1,9 @@
 #!/bin/bash
-. ./source-me.sh
+set -e
+set -x
+if [ -z ${octotiger_source_me_sources} ] ; then
+    . source-me.sh
+fi
 cd $BUILD_ROOT
 wget https://github.com/jemalloc/jemalloc/releases/download/$JEMALLOC_VER/jemalloc-$JEMALLOC_VER.tar.bz2
 tar -xjf jemalloc-$JEMALLOC_VER.tar.bz2
