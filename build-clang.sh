@@ -36,7 +36,7 @@ fi
 
 cd llvm
 mkdir llvm-build && cd llvm-build
-cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$CLANG_ROOT -DLLVM_ENABLE_PROJECTS="clang;libcxx;libcxxabi" -DLLVM_TARGETS_TO_BUILD="X86;NVPTX" ../llvm
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$CLANG_ROOT -DLLVM_ENABLE_PROJECTS="clang;libcxx;libcxxabi" -DLLVM_TARGETS_TO_BUILD="X86;NVPTX" ..
 make -j${PARALLEL_BUILD} install
 
 cd $BUILD_ROOT
