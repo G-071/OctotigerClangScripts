@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+set -x
 
 if [ -z ${octotiger_source_me_sources} ] ; then
     . source-me.sh
