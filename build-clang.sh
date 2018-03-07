@@ -28,7 +28,7 @@ if [ ! -d libcxx ] ; then
     cd ..
 fi
 if [ ! -d libcxxabi ] ; then
-    git clone https://llvm.org/git/libcxxbit.git
+    git clone https://llvm.org/git/libcxxabi.git
     cd libcxxabi
     git checkout release_60
     cd ..
