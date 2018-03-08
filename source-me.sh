@@ -17,6 +17,7 @@ export LDCXXFLAGS="$LDFLAGS -std=c++14 -stdlib=libc++"
 #
 if [[ `echo $HOST | grep vgpu2` ]]; then
     echo "compiling for vgpu2, doing additional setup";
+    source /usr/local.nfs/Modules/init/bash
     module load cuda-8.0
     export CUDATOOLKIT_HOME=/usr/local.nfs/Modules/modulefiles/cuda-8.0
     export CUDAFLAGS="--cuda-path=$CUDATOOLKIT_HOME \
