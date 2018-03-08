@@ -15,6 +15,7 @@ if [[ `echo $HOST | grep vgpu2` ]]; then
  -lcuda -lcublas "
 elif [[ `echo $HOSTNAME | grep bahram` ]]; then
     echo "compiling for rostam, doing additional setup";
+    module load gcc/5.4.0
     module load cmake/3.7.2
     module load cuda/8.0.61
     export CUDATOOLKIT_HOME=/opt/modules/cuda/8.0.61
@@ -25,6 +26,7 @@ elif [[ `echo $HOSTNAME | grep bahram` ]]; then
  -lcuda -lcublas "
 elif [[ `echo $HOSTNAME | grep rostam` ]]; then
     echo "compiling for rostam, doing additional setup";
+    module load gcc/5.4.0
     module load cmake/3.7.2
     module load cuda/8.0.61
     export CUDATOOLKIT_HOME=/opt/modules/cuda/8.0.61
