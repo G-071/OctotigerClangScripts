@@ -29,14 +29,14 @@ alias APEX_ON='export APEX_SCREEN_OUTPUT=1;export APEX_PROFILE=1;export APEX_OTF
 
 # Versions we will install
 mkdir -p build
-INSTALL_ROOT=$BUILD_ROOT/build
-HWLOC_VER=1.11.7
-JEMALLOC_VER=5.0.1
-OTF2_VER=2.0
-BOOST_VER=1.65.0
-BOOST_SUFFIX=1_65_0
-BOOST_ROOT=$INSTALL_ROOT/boost/$BOOST_VER
-PAPI_VER=5.5.1
+export INSTALL_ROOT=$BUILD_ROOT/build
+export HWLOC_VER=1.11.7
+export JEMALLOC_VER=5.0.1
+export OTF2_VER=2.0
+export BOOST_VER=1.65.0
+export BOOST_SUFFIX=1_65_0
+export BOOST_ROOT=$INSTALL_ROOT/boost/$BOOST_VER
+export PAPI_VER=5.5.1
 
 export PARALLEL_BUILD=$((`lscpu -p=cpu | wc -l`-4))
 

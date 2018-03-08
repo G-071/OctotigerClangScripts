@@ -2,8 +2,9 @@
 set -e
 set -x
 
-if [ -z ${octotiger_source_me_sources} ] ; then
-    . source-me.sh
+if [ -z ${BUILD_ROOT} ] ; then
+	export BUILD_ROOT=$PWD
+    export PARALLEL_BUILD=$((`lscpu -p=cpu | wc -l`-4))
 fi
 
 cd "$BUILD_ROOT"
@@ -35,8 +36,8 @@ if [ ! -d libcxxabi ] ; then
 fi
 
 cd llvm
-mkdir llvm-build && cd llvm-build
-cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$CLANG_ROOT -DLLVM_ENABLE_PROJECTS="clang;libcxx;libcxxabi" -DLLVM_TARGETS_TO_BUILD="X86;NVPTX" ..
+mkdir -p llvm-build && cd llvm-build
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$BUILD_ROOT/clang6 -DLLVM_ENABLE_PROJECTS="clang;libcxx;libcxxabi" -DLLVM_TARGETS_TO_BUILD="X86;NVPTX" ..
 make -j${PARALLEL_BUILD} install
 
 cd $BUILD_ROOT
