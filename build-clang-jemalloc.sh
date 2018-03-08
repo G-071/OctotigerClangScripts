@@ -11,3 +11,4 @@ cd jemalloc-$JEMALLOC_VER
 ./autogen.sh
 ./configure --prefix=$INSTALL_ROOT/jemalloc/$JEMALLOC_VER
 make -j8 -k install
+make -j8 -k install
