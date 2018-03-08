@@ -2,9 +2,8 @@
 set -e
 set -x
 
-if [ -z ${BUILD_ROOT} ] ; then
-	export BUILD_ROOT=$PWD
-    export PARALLEL_BUILD=$((`lscpu -p=cpu | wc -l`-4))
+if [ -z ${octotiger_source_me_sources} ] ; then
+    . source-me.sh
 fi
 
 cd "$BUILD_ROOT"
