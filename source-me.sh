@@ -15,12 +15,17 @@ export CXXFLAGS="-fPIC -march=native -mtune=native -ffast-math -std=c++14 -stdli
 export LDFLAGS="-L$CLANG_ROOT/lib -rpath $CLANG_ROOT/lib"
 export LDCXXFLAGS="$LDFLAGS -std=c++14 -stdlib=libc++"
 #
-export CUDATOOLKIT_HOME=/usr/local/cuda-8.0
-export CUDAFLAGS="--cuda-path=$CUDATOOLKIT_HOME \
+if [[ `echo $HOSTNAME | grep vgpu2` ]]; then
+    echo "compiling for vgpu2, doing additional setup";
+else
+    echo "compiling for normal desktop machine, expecting cuda in /usr/local/cuda";
+    export CUDATOOLKIT_HOME=/usr/local/cuda
+    export CUDAFLAGS="--cuda-path=$CUDATOOLKIT_HOME \
  -L$CUDATOOLKIT_HOME/lib64 \
  -L$CUDATOOLKIT_HOME/extras/CUPTI/lib64 \
-  -lcudart_static -ldl -lrt -pthread \
+ -lcudart_static -ldl -lrt -pthread \
  -lcuda -lcublas "
+fi
 
 
 # Optional shortcuts for Apex output in HPX
