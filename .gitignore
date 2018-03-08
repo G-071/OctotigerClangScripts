@@ -1,0 +1,7 @@
+src
+build
+clang6
+*.tar.*
+hwloc-*
+jemalloc-*
+boost_*
