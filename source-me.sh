@@ -24,6 +24,15 @@ if [[ `echo $HOST | grep vgpu2` ]]; then
  -L$CUDATOOLKIT_HOME/extras/CUPTI/lib64 \
  -lcudart_static -ldl -lrt -pthread \
  -lcuda -lcublas "
+elif [[ `echo $HOSTNAME | grep bahram` ]]; then
+    echo "compiling for rostam, doing additional setup";
+    module load cuda/8.0.61
+    export CUDATOOLKIT_HOME=/opt/modules/cuda/8.0.61
+    export CUDAFLAGS="--cuda-path=$CUDATOOLKIT_HOME \
+ -L$CUDATOOLKIT_HOME/lib64 \
+ -L$CUDATOOLKIT_HOME/extras/CUPTI/lib64 \
+ -lcudart_static -ldl -lrt -pthread \
+ -lcuda -lcublas "
 else
     echo "compiling for normal desktop machine, expecting cuda in /usr/local/cuda";
     export CUDATOOLKIT_HOME=/usr/local/cuda
