@@ -45,6 +45,13 @@ else
  -lcuda -lcublas "
 fi
 
+if [[ -z $2 ]]; then
+    export CUDATOOLKIT_HOME=""
+    export CUDAFLAGS=""
+    export OCT_WITH_CUDA=OFF
+else
+    export OCT_WITH_CUDA=ON
+fi
 
 # Optional shortcuts for Apex output in HPX
 alias APEX_OFF='export APEX_SCREEN_OUTPUT=0;export APEX_PROFILE=0;export APEX_OTF2=0'
@@ -76,3 +83,20 @@ else
     # export buildtype=Release
 fi
 echo "build type: $buildtype"
+if [[ ! -z $2 ]]; then
+    if [[ ! ("$2" == "cuda" || "$2" == "no-cuda") ]]; then
+    echo "no build cuda type specified: Use either cuda or no-cuda as second argument!"
+    kill -INT $$
+    fi
+if [[ "$2" == "no-cuda" ]]; then
+    export CUDATOOLKIT_HOME=""
+    export CUDAFLAGS=""
+    export OCT_WITH_CUDA=OFF
+elif [[ "$2" == "cuda" ]]; then
+    export OCT_WITH_CUDA=ON
+fi
+else
+    echo "no build cuda type specified: Use either cuda or no-cuda as second argument!"
+    kill -INT $$
+    # export buildtype=Release
+fi
