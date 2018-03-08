@@ -6,7 +6,7 @@ set -x
 source source-me.sh
 
 ./build-clang-jemalloc.sh
-./build-clang-hwloc.sh
+./build-clang-hwlock.sh
 ./build-clang-boost.sh
 
 ./build-clang-vc.sh

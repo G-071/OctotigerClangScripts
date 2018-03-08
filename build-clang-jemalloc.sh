@@ -5,7 +5,9 @@ if [ -z ${octotiger_source_me_sources} ] ; then
     . source-me.sh
 fi
 cd $BUILD_ROOT
-wget https://github.com/jemalloc/jemalloc/releases/download/$JEMALLOC_VER/jemalloc-$JEMALLOC_VER.tar.bz2
+if [ ! -f jemalloc-$JEMALLOC_VER.tar.bz2 ] ; then
+    wget https://github.com/jemalloc/jemalloc/releases/download/$JEMALLOC_VER/jemalloc-$JEMALLOC_VER.tar.bz2
+fi
 tar -xjf jemalloc-$JEMALLOC_VER.tar.bz2
 cd jemalloc-$JEMALLOC_VER
 ./autogen.sh
