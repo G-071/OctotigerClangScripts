@@ -1,5 +1,7 @@
 #!/bin/bash
 . ./source-me.sh
+. ./source-clang.sh
+
 echo $BUILD_ROOT $INSTALL_ROOT $PAPI_VER
 cd "$BUILD_ROOT"
 wget http://icl.utk.edu/projects/papi/downloads/papi-${PAPI_VER}.tar.gz

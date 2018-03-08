@@ -1,5 +1,6 @@
 #!/bin/bash
 . ./source-me.sh
+. source-clang.sh
 cd $BUILD_ROOT
 wget http://www.vi-hps.org/upload/packages/otf2/otf2-2.0.tar.gz
 tar -xzf otf2-2.0.tar.gz

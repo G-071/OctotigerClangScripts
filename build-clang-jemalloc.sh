@@ -3,6 +3,7 @@ set -e
 set -x
 if [ -z ${octotiger_source_me_sources} ] ; then
     . source-me.sh
+    . source-clang.sh
 fi
 cd $BUILD_ROOT
 if [ ! -f jemalloc-$JEMALLOC_VER.tar.bz2 ] ; then
