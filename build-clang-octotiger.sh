@@ -16,11 +16,7 @@ if [ ! -d octotiger ] ; then
     cd ..
 fi
 cd octotiger
-    if [[  ("$OCT_WITH_CUDA" == "OFF") ]]; then
-    git checkout clang_conversion
-    elif [[  ("$OCT_WITH_CUDA" == "ON") ]]; then
     git checkout clang_cuda
-    fi
 git pull
 cd ../..
 
