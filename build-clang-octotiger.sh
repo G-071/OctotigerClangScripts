@@ -13,15 +13,14 @@ cd src
 if [ ! -d octotiger ] ; then
     git clone git@github.com:STEllAR-GROUP/octotiger.git
     cd octotiger
+    cd ..
+fi
+cd octotiger
     if [[  ("$OCT_WITH_CUDA" == "OFF") ]]; then
     git checkout clang_conversion
     elif [[  ("$OCT_WITH_CUDA" == "ON") ]]; then
     git checkout clang_cuda
     fi
-
-    cd ..
-fi
-cd octotiger
 git pull
 cd ../..
 
