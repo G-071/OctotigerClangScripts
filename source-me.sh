@@ -41,9 +41,10 @@ else
     export CUDAFLAGS="--cuda-path=$CUDATOOLKIT_HOME \
  -L$CUDATOOLKIT_HOME/lib64 \
  -L$CUDATOOLKIT_HOME/extras/CUPTI/lib64 \
- -lcudart_static -ldl -lrt -pthread \
- -lcuda -lcublas "
+ -lcudart_static -pthread \
+ -lcuda -lcublas"
 fi
+# -lcudart -ldl -lrt -pthread \
 
 if [[ -z $2 ]]; then
     export CUDATOOLKIT_HOME=""

@@ -16,8 +16,6 @@ if [ ! -d octotiger ] ; then
     cd ..
 fi
 cd octotiger
-    git checkout clang_cuda
-git pull
 cd ../..
 
 mkdir -p build/octotiger
@@ -32,7 +30,7 @@ cmake \
 -DCMAKE_EXE_LINKER_FLAGS="$LDCXXFLAGS $CUDAFLAGS" \
 -DCMAKE_SHARED_LINKER_FLAGS="$LDCXXFLAGS $CUDAFLAGS" \
 -DBOOST_ROOT=$INSTALL_ROOT/boost/$BOOST_VER \
--DBoost_COMPILER=-clang60 \
+-DBoost_COMPILER=-clang70 \
 -DOCTOTIGER_WITH_CUDA=${OCT_WITH_CUDA} \
 -DCMAKE_BUILD_TYPE=${buildtype} \
 -DOCTOTIGER_WITH_SILO=OFF \
