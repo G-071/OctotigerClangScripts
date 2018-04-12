@@ -13,6 +13,46 @@ if [[ `echo $HOST | grep vgpu2` ]]; then
  -L$CUDATOOLKIT_HOME/extras/CUPTI/lib64 \
  -lcudart_static -ldl -lrt -pthread \
  -lcuda -lcublas "
+elif [[ `echo $HOST | grep vgpu1` ]]; then
+    echo "compiling for vgpu1, doing additional setup";
+    source /usr/local.nfs/Modules/init/bash
+    module load cuda-8.0
+    export CUDATOOLKIT_HOME=/usr/local.nfs/Modules/modulefiles/cuda-8.0
+    export CUDAFLAGS="--cuda-path=$CUDATOOLKIT_HOME \
+ -L$CUDATOOLKIT_HOME/lib64 \
+ -L$CUDATOOLKIT_HOME/extras/CUPTI/lib64 \
+ -lcudart_static -ldl -lrt -pthread \
+ -lcuda -lcublas "
+elif [[ `echo $HOST | grep argon-tesla1` ]]; then
+    echo "compiling for argon-tesla1, doing additional setup";
+    source /usr/local.nfs/Modules/init/bash
+    module load cuda-8.0
+    export CUDATOOLKIT_HOME=/usr/local.nfs/Modules/modulefiles/cuda-8.0
+    export CUDAFLAGS="--cuda-path=$CUDATOOLKIT_HOME \
+ -L$CUDATOOLKIT_HOME/lib64 \
+ -L$CUDATOOLKIT_HOME/extras/CUPTI/lib64 \
+ -lcudart_static -ldl -lrt -pthread \
+ -lcuda -lcublas "
+elif [[ `echo $HOST | grep argon-tesla2` ]]; then
+    echo "compiling for argon-tesla2, doing additional setup";
+    source /usr/local.nfs/Modules/init/bash
+    module load cuda-8.0
+    export CUDATOOLKIT_HOME=/usr/local.nfs/Modules/modulefiles/cuda-8.0
+    export CUDAFLAGS="--cuda-path=$CUDATOOLKIT_HOME \
+ -L$CUDATOOLKIT_HOME/lib64 \
+ -L$CUDATOOLKIT_HOME/extras/CUPTI/lib64 \
+ -lcudart_static -ldl -lrt -pthread \
+ -lcuda -lcublas "
+elif [[ `echo $HOST | grep ipvs8gtx` ]]; then
+    echo "compiling for ipvs8gtx, doing additional setup";
+    source /usr/local.nfs/Modules/init/bash
+    module load cuda-8.0
+    export CUDATOOLKIT_HOME=/usr/local.nfs/Modules/modulefiles/cuda-8.0
+    export CUDAFLAGS="--cuda-path=$CUDATOOLKIT_HOME \
+ -L$CUDATOOLKIT_HOME/lib64 \
+ -L$CUDATOOLKIT_HOME/extras/CUPTI/lib64 \
+ -lcudart_static -ldl -lrt -pthread \
+ -lcuda -lcublas "
 elif [[ `echo $HOSTNAME | grep bahram` ]]; then
     echo "compiling for rostam, doing additional setup";
     module load gcc/5.4.0
