@@ -70,7 +70,7 @@ echo "# HPX commit: $current_commit_hpx " >> total_time_results.txt
 echo "# Date of run $today" >> total_time_results.txt
 echo "# Measuring total time" >> total_time_results.txt
 echo "#" >> total_time_results.txt
-echo "#Number HPX threads,All off,m2m on,m2p on,p2p on,p2m on,All on,All on except p2m" >> total_time_results.txt
+echo "#Number HPX threads,All off,multipole on,p2p on,p2m on,All on" >> total_time_results.txt
 # Save this version of the script for sanity checks later on
 cp ../KNL-test.sh used-script-copy.txt
 # Save scenario file for sanity check later on
@@ -142,29 +142,23 @@ echo "" | tee -a LOG.txt
 echo "Running all tests..." | tee -a LOG.txt
 for i in $(seq "$2" "$3" "$4"); do
 	echo "Running test $i.1 - all off..." | tee -a LOG.txt
-	output1=$("./../$5" -Ihpx.stacks.use_guard_pages=0 "-t$i" $octotiger_args p2p_kernel_type=old p2m_kernel_type=old m2m_kernel_type=old m2p_kernel_type=old)
+	output1=$("./../$5" -Ihpx.stacks.use_guard_pages=0 "-t$i" $octotiger_args -P2P_kernel_type=OLD -P2M_kernel_type=OLD -Multipole_kernel_type=OLD )
 	check_results "$1" "$output1"
-	echo "Running test $i,2 - m2m on..." | tee -a LOG.txt
-	output2=$("./../$5" -Ihpx.stacks.use_guard_pages=0 "-t$i" $octotiger_args p2p_kernel_type=old p2m_kernel_type=old m2m_kernel_type=soa_cpu m2p_kernel_type=old)
+	echo "Running test $i,2 - Multipole  on..." | tee -a LOG.txt
+	output2=$("./../$5" -Ihpx.stacks.use_guard_pages=0 "-t$i" $octotiger_args -P2P_kernel_type=OLD -P2M_kernel_type=OLD -Multipole_kernel_type=SOA_CPU )
 	check_results "$1" "$output2"
-	echo "Running test $i.3 - m2p on..." | tee -a LOG.txt
-	output3=$("./../$5" -Ihpx.stacks.use_guard_pages=0 "-t$i" $octotiger_args p2p_kernel_type=old p2m_kernel_type=old m2m_kernel_type=old m2p_kernel_type=soa_cpu)
+	echo "Running test $i.3 - -P2P on..." | tee -a LOG.txt
+	output3=$("./../$5" -Ihpx.stacks.use_guard_pages=0 "-t$i" $octotiger_args -P2P_kernel_type=SOA_CPU -P2M_kernel_type=OLD -Multipole_kernel_type=OLD )
 	check_results "$1" "$output3"
-	echo "Running test $i.4 - p2p on..." | tee -a LOG.txt
-	output4=$("./../$5" -Ihpx.stacks.use_guard_pages=0 "-t$i" $octotiger_args p2p_kernel_type=soa_cpu p2m_kernel_type=old m2m_kernel_type=old m2p_kernel_type=old)
+	echo "Running test $i.4 - -P2M on..." | tee -a LOG.txt
+	output4=$("./../$5" -Ihpx.stacks.use_guard_pages=0 "-t$i" $octotiger_args -P2P_kernel_type=OLD -P2M_kernel_type=SOA_CPU -Multipole_kernel_type=OLD )
 	check_results "$1" "$output4"
-	echo "Running test $i.5 - p2m on..." | tee -a LOG.txt
-	output5=$("./../$5" -Ihpx.stacks.use_guard_pages=0 "-t$i" $octotiger_args p2p_kernel_type=old p2m_kernel_type=soa_cpu m2m_kernel_type=old m2p_kernel_type=old)
-	check_results "$1" "$output5"
 	echo "Running test $i.6 - All on..." | tee -a LOG.txt
-	output6=$("./../$5" -Ihpx.stacks.use_guard_pages=0 "-t$i" $octotiger_args p2p_kernel_type=soa_cpu p2m_kernel_type=soa_cpu m2m_kernel_type=soa_cpu m2p_kernel_type=soa_cpu)
-	check_results "$1" "$output6"
-	echo "Running test $i.7 - All on except p2m..." | tee -a LOG.txt
-	output7=$("./../$5" -Ihpx.stacks.use_guard_pages=0 "-t$i" $octotiger_args p2p_kernel_type=soa_cpu p2m_kernel_type=old m2m_kernel_type=soa_cpu m2p_kernel_type=soa_cpu)
-	check_results "$1" "$output7"
+	output5=$("./../$5" -Ihpx.stacks.use_guard_pages=0 "-t$i" $octotiger_args -P2P_kernel_type=SOA_CPU -P2M_kernel_type=SOA_CPU -Multipole_kernel_type=SOA_CPU )
+	check_results "$1" "$output5"
 	# Clean up results
-	clean_output_computational="$i,$(echo "$output1" | grep 'Computation' | sed 's/Computation: //g'),$(echo "$output2" | grep 'Computation' | sed 's/Computation: //g'),$(echo "$output3" | grep 'Computation' | sed 's/Computation: //g'),$(echo "$output4" | grep 'Computation' | sed 's/Computation: //g'),$(echo "$output5" | grep 'Computation' | sed 's/Computation: //g'),$(echo "$output6" | grep 'Computation' | sed 's/Computation: //g'),$(echo "$output7" | grep 'Computation' | sed 's/Computation: //g')"
-	clean_output_total="$i,$(echo "$output1" | grep 'Total' | sed 's/Total: //g'),$(echo "$output2" | grep 'Total' | sed 's/Total: //g'),$(echo "$output3" | grep 'Total' | sed 's/Total: //g'),$(echo "$output4" | grep 'Total' | sed 's/Total: //g'),$(echo "$output5" | grep 'Total' | sed 's/Total: //g'),$(echo "$output6" | grep 'Total' | sed 's/Total: //g'),$(echo "$output7" | grep 'Total' | sed 's/Total: //g')"
+	clean_output_computational="$i,$(echo "$output1" | grep 'Computation' | sed 's/Computation: //g'),$(echo "$output2" | grep 'Computation' | sed 's/Computation: //g'),$(echo "$output3" | grep 'Computation' | sed 's/Computation: //g'),$(echo "$output4" | grep 'Computation' | sed 's/Computation: //g'),$(echo "$output5" | grep 'Computation' | sed 's/Computation: //g')"
+	clean_output_total="$i,$(echo "$output1" | grep 'Total' | sed 's/Total: //g'),$(echo "$output2" | grep 'Total' | sed 's/Total: //g'),$(echo "$output3" | grep 'Total' | sed 's/Total: //g'),$(echo "$output4" | grep 'Total' | sed 's/Total: //g'),$(echo "$output5" | grep 'Total' | sed 's/Total: //g')"
 	# Print and save to files >> for appending
 	echo "$clean_output_computational" >> "computation_time_results.txt"
 	echo "$clean_output_computational" | tee -a LOG.txt
