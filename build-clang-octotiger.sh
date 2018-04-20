@@ -11,7 +11,7 @@ cd "$BUILD_ROOT"
 mkdir -p src
 cd src
 if [ ! -d octotiger ] ; then
-    git clone git@github.com:STEllAR-GROUP/octotiger.git
+    git clone https://github.com/STEllAR-GROUP/octotiger.git
     cd octotiger
     git checkout clang_cuda_stable
     cd ..

@@ -27,18 +27,32 @@ elif [[ `echo $HOST | grep argon-tesla1` ]]; then
     echo "compiling for argon-tesla1, doing additional setup";
     source /usr/local.nfs/Modules/init/bash
     module load cuda-8.0
-    export CUDATOOLKIT_HOME=/usr/local.nfs/Modules/modulefiles/cuda-8.0
+    export CUDATOOLKIT_HOME=/usr/local.nfs/sw/cuda/cuda-8.0
     export CUDAFLAGS="--cuda-path=$CUDATOOLKIT_HOME \
  -L$CUDATOOLKIT_HOME/lib64 \
  -L$CUDATOOLKIT_HOME/extras/CUPTI/lib64 \
  -lcudart_static -ldl -lrt -pthread \
  -lcuda -lcublas "
+
+    export CUDA_VISIBLE_DEVICES=0
 elif [[ `echo $HOST | grep argon-tesla2` ]]; then
     echo "compiling for argon-tesla2, doing additional setup";
     source /usr/local.nfs/Modules/init/bash
     module load cuda-8.0
-    export CUDATOOLKIT_HOME=/usr/local.nfs/Modules/modulefiles/cuda-8.0
+    export CUDATOOLKIT_HOME=/usr/local.nfs/sw/cuda/cuda-8.0
     export CUDAFLAGS="--cuda-path=$CUDATOOLKIT_HOME \
+    export CUDA_VISIBLE_DEVICES=0
+ -L$CUDATOOLKIT_HOME/lib64 \
+ -L$CUDATOOLKIT_HOME/extras/CUPTI/lib64 \
+ -lcudart_static -ldl -lrt -pthread \
+ -lcuda -lcublas "
+elif [[ `echo $HOST | grep argon-gtx` ]]; then
+    echo "compiling for argon-tesla2, doing additional setup";
+    source /usr/local.nfs/Modules/init/bash
+    module load cuda-8.0
+    export CUDATOOLKIT_HOME=/usr/local.nfs/sw/cuda/cuda-8.0
+    export CUDAFLAGS="--cuda-path=$CUDATOOLKIT_HOME \
+    export CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
  -L$CUDATOOLKIT_HOME/lib64 \
  -L$CUDATOOLKIT_HOME/extras/CUPTI/lib64 \
  -lcudart_static -ldl -lrt -pthread \
