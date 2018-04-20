@@ -1,0 +1,9 @@
+# Argumente fuer octotiger
+octotiger_args: -Ihpx.stacks.use_guard_pages=0 -t64 -Disableoutput -Problem=moving_star -Max_level=6 -Odt=0.3 -Stoptime=0.2 -Xscale=20.0 -Omega=0.1 -Stopstep=20
+# Expected results
+rho 1.562238e-04 1.978540e-04
+egas 1.717350e-04 2.332922e-04
+sx 5.623634e-03 5.590835e-03
+sy 5.662577e-03 5.618440e-03
+tau 1.878433e-04 1.906649e-04
+primary_core 1.562238e-04 1.978540e-04
