@@ -1,0 +1,12 @@
+# Argumente fuer octotiger
+octotiger_args: -Disableoutput -Problem=moving_star -Max_level=7 -Odt=0.3 -Stoptime=0.2 -Xscale=32 -Omega=0.1 -Stopstep=20 -Ihpx.stacks.use_guard_pages=0
+
+# Expected results
+rho 8.719691e-05 1.185879e-04
+egas 9.540682e-05 1.338535e-04
+sx 4.493717e-03 4.474776e-03
+sy 4.518050e-03 4.489717e-03
+tau 1.248843e-04 1.190081e-04
+primary_core 8.719691e-05 1.185879e-04
+# Time with 48 streams on vgpu2: 223; with 0 streams: 321
+
