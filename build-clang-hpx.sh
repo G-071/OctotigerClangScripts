@@ -13,9 +13,9 @@ cd src
 if [ ! -d hpx ] ; then
     git clone https://github.com/STEllAR-GROUP/hpx.git
     cd hpx
-    git checkout 1.1.0
+    #git checkout 1.1.0
     #git checkout cuda_clang
-    #git checkout master
+    git checkout master
     cd ..
 fi
 cd ..
