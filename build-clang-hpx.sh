@@ -18,6 +18,7 @@ if [ ! -d hpx ] ; then
     #git checkout master
     cd ..
 fi
+cd ..
 
 mkdir -p build/hpx
 echo $(pwd)
