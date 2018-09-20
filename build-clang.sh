@@ -12,31 +12,31 @@ cd src/llvm-project
 if [ ! -d llvm ] ; then
     git clone https://llvm.org/git/llvm.git
     cd llvm
-#    git checkout release_60
+    git checkout release_70
     cd ..
 fi
 if [ ! -d clang ] ; then
     git clone https://llvm.org/git/clang.git
     cd clang
-#    git checkout release_60
+    git checkout release_70
     cd ..
 fi
 if [ ! -d libcxx ] ; then
     git clone https://llvm.org/git/libcxx.git
     cd libcxx
-#    git checkout release_60
+    git checkout release_70
     cd ..
 fi
 if [ ! -d libcxxabi ] ; then
     git clone https://llvm.org/git/libcxxabi.git
     cd libcxxabi
-#    git checkout release_60
+    git checkout release_70
     cd ..
 fi
 
 cd llvm
 mkdir -p llvm-build && cd llvm-build
-cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$BUILD_ROOT/clang6 -DLLVM_ENABLE_PROJECTS="clang;libcxx;libcxxabi" -DLLVM_TARGETS_TO_BUILD="X86;NVPTX" ..
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$BUILD_ROOT/clang -DLLVM_ENABLE_PROJECTS="clang;libcxx;libcxxabi" -DLLVM_TARGETS_TO_BUILD="X86;NVPTX" ..
 make -j${PARALLEL_BUILD} install
 
 cd $BUILD_ROOT
