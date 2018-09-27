@@ -13,7 +13,7 @@ cd src
 if [ ! -d octotiger ] ; then
     git clone https://github.com/STEllAR-GROUP/octotiger.git
     cd octotiger
-    git checkout clang_cuda_stable
+    git checkout aa832788dd0c57eee3a750d8969a82332f1d6354
     cd ..
 fi
 cd octotiger

@@ -13,13 +13,12 @@ cd src
 if [ ! -d hpx ] ; then
     git clone https://github.com/STEllAR-GROUP/hpx.git
     cd hpx
-    # git checkout 1.0.0
+    #git checkout 1.1.0
     #git checkout cuda_clang
     git checkout master
     cd ..
 fi
 cd hpx
-git pull
 cd ../..
 
 mkdir -p build/hpx
@@ -50,7 +49,7 @@ cmake \
  -DVc_DIR=$INSTALL_ROOT/Vc-Release/lib/cmake/Vc \
  -DHPX_WITH_EXAMPLES:BOOL=ON \
  -DCMAKE_BUILD_TYPE=$buildtype \
- -DHPX_WITH_NETWORKING=OFF \
+ -DHPX_WITH_NETWORKING=ON \
  ../../src/hpx
 
 make -j${PARALLEL_BUILD} core components VERBOSE=1

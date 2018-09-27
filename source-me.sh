@@ -1,7 +1,7 @@
 
 # our build directory root for all clang compiled projects in one place
 export BUILD_ROOT=$PWD
-mkdir -p clang6
+mkdir -p clang
 #
 if [[ `echo $HOST | grep vgpu2` ]]; then
     echo "compiling for vgpu2, doing additional setup";
