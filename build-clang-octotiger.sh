@@ -13,11 +13,9 @@ cd src
 if [ ! -d octotiger ] ; then
     git clone https://github.com/STEllAR-GROUP/octotiger.git
     cd octotiger
-    git checkout clang_cuda_stable
+    git checkout master
     cd ..
 fi
-cd octotiger
-cd ../..
 
 mkdir -p build/octotiger
 echo $(pwd)
