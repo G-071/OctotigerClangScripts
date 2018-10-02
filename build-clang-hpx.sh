@@ -17,7 +17,6 @@ if [ ! -d hpx ] ; then
     cd ..
 fi
 cd hpx
-git pull
 cd ../..
 
 mkdir -p build/hpx

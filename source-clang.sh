@@ -1,4 +1,4 @@
-export CLANG_ROOT=$BUILD_ROOT/clang6
+export CLANG_ROOT=$BUILD_ROOT/clang
 export CC=$CLANG_ROOT/bin/clang
 export CXX=$CLANG_ROOT/bin/clang++
 export CPP=$CLANG_ROOT/bin/clang-cpp
