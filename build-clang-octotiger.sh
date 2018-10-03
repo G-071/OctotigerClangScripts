@@ -16,6 +16,7 @@ if [ ! -d octotiger ] ; then
     git checkout master
     cd ..
 fi
+cd ..
 
 mkdir -p build/octotiger
 echo $(pwd)
