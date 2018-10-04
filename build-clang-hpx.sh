@@ -48,6 +48,8 @@ cmake \
  -DHPX_WITH_EXAMPLES:BOOL=ON \
  -DCMAKE_BUILD_TYPE=$buildtype \
  -DHPX_WITH_NETWORKING=ON \
+ -DHPX_WITH_ITTNOTIFY=ON \
+ -DAMPLIFIER_ROOT=/opt/intel/vtune_amplifier \
  ../../src/hpx
 
 make -j${PARALLEL_BUILD} core components VERBOSE=1
