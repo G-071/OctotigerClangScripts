@@ -48,6 +48,7 @@ cmake \
  -DHPX_WITH_EXAMPLES:BOOL=ON \
  -DCMAKE_BUILD_TYPE=$buildtype \
  -DHPX_WITH_NETWORKING=ON \
+ -DHPX_WITH_MAX_CPU_COUNT=256 \
  ../../src/hpx
 
 make -j${PARALLEL_BUILD} core components VERBOSE=1
