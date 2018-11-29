@@ -13,7 +13,7 @@ cd src
 if [ ! -d octotiger ] ; then
     git clone https://github.com/STEllAR-GROUP/octotiger.git
     cd octotiger
-    git checkout master
+    git checkout cuda_constant_memory
     cd ..
 fi
 cd ..

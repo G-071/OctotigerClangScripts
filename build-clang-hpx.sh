@@ -13,7 +13,7 @@ cd src
 if [ ! -d hpx ] ; then
     git clone https://github.com/STEllAR-GROUP/hpx.git
     cd hpx
-    git checkout master
+    git checkout 1.2.0
     cd ..
 fi
 cd hpx
